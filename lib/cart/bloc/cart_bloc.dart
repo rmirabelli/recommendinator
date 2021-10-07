@@ -23,6 +23,12 @@ class CartBloc extends Bloc<CartEvent, CartState> {
       }
     });
 
+    on<CheckoutCart>((event, emit) {
+      //TODO: Add to customer preferences
+      currentItems = [];
+      emit(CartEmpty());
+    });
+
     on<ResetCart>((event, emit) {
       currentItems = [];
       emit(CartEmpty());

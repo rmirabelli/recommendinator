@@ -16,3 +16,5 @@ class RemoveFromCart extends CartEvent {
 }
 
 class ResetCart extends CartEvent {}
+
+class CheckoutCart extends CartEvent {}

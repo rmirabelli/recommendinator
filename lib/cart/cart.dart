@@ -18,7 +18,7 @@ class Cart extends StatelessWidget {
               child: Text("Cart Empty -- Add some food!"),
             );
           } else if (state is CartPopulated) {
-            return _listView(state.items);
+            return _listView(context, state.items);
           } else {
             return Container();
           }
@@ -27,33 +27,52 @@ class Cart extends StatelessWidget {
     );
   }
 
-  ListView _listView(List<OrderItem> orderItems) {
+  ListView _listView(BuildContext context, List<OrderItem> orderItems) {
     return ListView.builder(
-        itemCount: orderItems.length,
+        itemCount: orderItems.length + 1,
         itemBuilder: (context, index) {
-          var orderItem = orderItems[index];
-          var menuItem = orderItem.item;
-          return Card(
-              child: ListTile(
-            onTap: () {
-              //TODO: Show modification interface?
-            },
-            title: Text(menuItem.name),
-            subtitle: Text(menuItem.price.toString()),
-            leading: CircleAvatar(
-                backgroundImage: NetworkImage(menuItem.thumbnailURL)),
-            trailing: GestureDetector(
+          if (index < orderItems.length) {
+            var orderItem = orderItems[index];
+            var menuItem = orderItem.item;
+            return Card(
+                child: ListTile(
               onTap: () {
-                context.read<CartBloc>().add(RemoveFromCart(orderItem));
-                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                  content: Text("Removed ${menuItem.name} from cart"),
-                ));
+                //TODO: Show modification interface?
               },
-              child: const Icon(
-                Icons.remove, // add custom icons also
+              title: Text(menuItem.name),
+              subtitle: Text(menuItem.price.toString()),
+              leading: CircleAvatar(
+                  backgroundImage: NetworkImage(menuItem.thumbnailURL)),
+              trailing: GestureDetector(
+                onTap: () {
+                  context.read<CartBloc>().add(RemoveFromCart(orderItem));
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    content: Text("Removed ${menuItem.name} from cart"),
+                  ));
+                },
+                child: const Icon(
+                  Icons.remove, // add custom icons also
+                ),
               ),
-            ),
-          ));
+            ));
+          } else {
+            return _checkoutButtonContent(context);
+          }
         });
+  }
+
+  Widget _checkoutButtonContent(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(50),
+      child: ElevatedButton(
+        onPressed: () {
+          context.read<CartBloc>().add(CheckoutCart());
+          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+            content: Text("Thanks for your order!"),
+          ));
+        },
+        child: const Text('Checkout'),
+      ),
+    );
   }
 }
