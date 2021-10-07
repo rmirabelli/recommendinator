@@ -3,7 +3,7 @@ import '../models/modifier.dart';
 
 class OrderItem {
   MenuItem item;
-  Modifier modifier;
+  Modifier? modifier;
 
   OrderItem(
     this.item,

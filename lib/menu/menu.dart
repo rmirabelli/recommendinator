@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:recommendinator/cart/bloc/cart_bloc.dart';
 import 'package:recommendinator/cart/cart.dart';
 import 'package:recommendinator/item_detail/bloc/item_detail_bloc.dart';
 import 'package:recommendinator/item_detail/item_detail.dart';
 import 'package:recommendinator/menu/bloc/menu_bloc.dart';
 import 'package:recommendinator/models/menu_item.dart';
+import 'package:recommendinator/models/order_item.dart';
 import 'package:recommendinator/settings/bloc/settings_bloc.dart';
 import 'package:recommendinator/settings/settings.dart';
 
@@ -80,6 +82,18 @@ class Menu extends StatelessWidget {
             subtitle: Text(menuItem.price.toString()),
             leading: CircleAvatar(
                 backgroundImage: NetworkImage(menuItem.thumbnailURL)),
+            trailing: GestureDetector(
+              onTap: () {
+                OrderItem item = OrderItem(menuItem, null);
+                context.read<CartBloc>().add(AddToCart(item));
+                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                  content: Text("Added ${menuItem.name} to cart"),
+                ));
+              },
+              child: const Icon(
+                Icons.add, // add custom icons also
+              ),
+            ),
           ));
         });
   }
