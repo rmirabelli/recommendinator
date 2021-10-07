@@ -4,3 +4,9 @@ part of 'menu_bloc.dart';
 abstract class MenuState {}
 
 class MenuInitial extends MenuState {}
+
+class MenuLoaded extends MenuState {
+  final List<MenuItem> menuItems;
+
+  MenuLoaded(this.menuItems);
+}
