@@ -1,13 +1,13 @@
 import 'package:recommendinator/models/menu_item.dart';
 
-import '../models/menu_item.dart';
+import '../models/order_item.dart';
 
 class CustomerPreferences {
-  List<MenuItem> items;
+  List<OrderItem> items;
 
   CustomerPreferences(this.items);
 
-  add(MenuItem item) {
+  add(OrderItem item) {
     items.add(item);
   }
 }

@@ -7,6 +7,8 @@ import 'package:recommendinator/models/customer_preferences.dart';
 import 'package:recommendinator/models/k_nearest_neighbor.dart';
 import 'package:recommendinator/models/menu_item.dart';
 import 'package:flutter/services.dart';
+import 'package:recommendinator/models/modifier.dart';
+import 'package:recommendinator/models/order_item.dart';
 
 part 'menu_event.dart';
 part 'menu_state.dart';
@@ -23,7 +25,18 @@ class MenuBloc extends Bloc<MenuEvent, MenuState> {
       //Generate recommended items and append
       KNearestNeighbor recommendinatorModel = KNearestNeighbor(menuItems);
       //TODO: Pull preferences from stored items
-      CustomerPreferences preferences = CustomerPreferences(menuItems);
+      CustomerPreferences preferences = CustomerPreferences(
+        [
+          OrderItem(
+            menuItems.first,
+            Modifier("none", ModifierType.remove),
+          ),
+          OrderItem(
+            menuItems[1],
+            Modifier("none", ModifierType.remove),
+          ),
+        ],
+      );
       var recommendedItems =
           recommendinatorModel.recommend(preferences).map((e) {
         // Change these items to the "Recommended" group
