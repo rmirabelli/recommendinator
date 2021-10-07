@@ -6,6 +6,7 @@ class MenuItem {
   List<String> ingredients;
   String thumbnailURL;
   List<String> preparation;
+  String group = "Menu";
 
   MenuItem({
     required this.name,

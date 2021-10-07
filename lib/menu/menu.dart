@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:grouped_list/grouped_list.dart';
 import 'package:recommendinator/cart/bloc/cart_bloc.dart';
 import 'package:recommendinator/cart/cart.dart';
 import 'package:recommendinator/item_detail/bloc/item_detail_bloc.dart';
@@ -18,7 +19,7 @@ class Menu extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: const Text('Food Recommendinator'),
+          title: const Text('The Recommendinator'),
           leading: GestureDetector(
               onTap: () {
                 Navigator.of(context)
@@ -63,11 +64,21 @@ class Menu extends StatelessWidget {
     );
   }
 
-  ListView _listView(List<MenuItem> menuItems) {
-    return ListView.builder(
-        itemCount: menuItems.length,
-        itemBuilder: (context, index) {
-          var menuItem = menuItems[index];
+  GroupedListView _listView(List<MenuItem> menuItems) {
+    return GroupedListView<MenuItem, String>(
+        elements: menuItems,
+        groupBy: (element) => element.group,
+        groupComparator: (group1, group2) => group2.compareTo(group1),
+        groupSeparatorBuilder: (String value) => Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                value,
+                textAlign: TextAlign.center,
+                style:
+                    const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+            ),
+        itemBuilder: (context, menuItem) {
           return Card(
               child: ListTile(
             onTap: () {
