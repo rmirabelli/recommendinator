@@ -1,0 +1,11 @@
+{
+    "items": [
+        {
+            "name": "beef taco",
+            "price": 2.13,
+            "ingredients": ["beef", "corn tortilla","cheese"],
+            "thumbnail": "https://path_to_image",
+            "prep": ["mince"]
+        }
+    ]
+}
