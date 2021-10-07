@@ -90,8 +90,6 @@
             "ingredients": ["beef", "lettuce","cheese", "tomato", "bun"],
             "thumbnail": "https://path_to_image",
             "prep": ["mince"]
-        },
-
-
+        }
     ]
 }

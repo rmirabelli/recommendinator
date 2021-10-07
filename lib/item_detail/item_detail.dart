@@ -25,6 +25,35 @@ class ItemDetail extends StatelessWidget {
   }
 
   Widget _itemDetailContent(MenuItem item) {
-    return Text(item.name);
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: <Widget>[
+        Container(
+          color: Colors.blue,
+          child: SizedBox(
+            child: Expanded(
+              child: FittedBox(
+                fit: BoxFit.contain, // otherwise the logo will be tiny
+                child: Image.network(item.thumbnailURL),
+              ),
+            ),
+          ),
+        ),
+        SizedBox(
+          height: 50,
+          child: Text(
+            "Ingredients: " + item.ingredients.join(","),
+            textAlign: TextAlign.center,
+          ),
+        ),
+        SizedBox(
+          height: 50,
+          child: Text(
+            item.name,
+            textAlign: TextAlign.center,
+          ),
+        ),
+      ],
+    );
   }
 }
