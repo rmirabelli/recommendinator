@@ -52,7 +52,7 @@ class Menu extends StatelessWidget {
         builder: (context, state) {
           if (state is MenuInitial) {
             context.read<MenuBloc>().add(LoadMenu());
-            return const CircularProgressIndicator();
+            return const Center(child: CircularProgressIndicator());
           } else if (state is MenuLoaded) {
             return _listView(state.menuItems);
           } else {

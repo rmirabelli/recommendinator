@@ -17,7 +17,6 @@ class MenuItem {
   });
 
   factory MenuItem.fromJSON(Map<String, dynamic> json) {
-    print(json['name']);
     return MenuItem(
       name: json["name"] as String,
       price: json["price"] as double,
@@ -25,5 +24,15 @@ class MenuItem {
       preparation: List.from(json["prep"]),
       ingredients: List.from(json["ingredients"]),
     );
+  }
+
+  Map<String, dynamic> toMap() {
+    Map<String, dynamic> map = {};
+    map['name'] = name;
+    map['price'] = price;
+    map['thumbnail'] = thumbnailURL;
+    map['prep'] = preparation;
+    map['ingredients'] = ingredients;
+    return map;
   }
 }
