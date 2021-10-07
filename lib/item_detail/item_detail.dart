@@ -63,6 +63,13 @@ class ItemDetail extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
           ),
+          const SizedBox(height: 20),
+          SizedBox(
+            child: Text(
+              item.name,
+              textAlign: TextAlign.center,
+            ),
+          ),
         ],
       ),
     );
