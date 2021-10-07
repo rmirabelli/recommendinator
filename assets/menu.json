@@ -6,6 +6,21 @@
             "ingredients": ["beef", "corn tortilla","cheese"],
             "thumbnail": "https://path_to_image",
             "prep": ["mince"]
+        },
+        {
+            "name": "grilled chicken taco",
+            "price": 3.13,
+            "ingredients": ["chicken", "corn tortilla","cheese", "lettuce", "tomato"],
+            "thumbnail": "https://path_to_image",
+            "prep": ["grilled"]
+        },
+        {
+            "name": "grilled shrimp taco",
+            "price": 3.13,
+            "ingredients": ["shrimp", "flour tortilla","cheese", "lettuce", "tomato", "lime", "cilantro"],
+            "thumbnail": "https://path_to_image",
+            "prep": ["grilled"]
         }
+
     ]
 }
