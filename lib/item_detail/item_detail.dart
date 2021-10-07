@@ -29,7 +29,6 @@ class ItemDetail extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: <Widget>[
         Container(
-          color: Colors.blue,
           child: SizedBox(
             child: Expanded(
               child: FittedBox(
@@ -39,21 +38,45 @@ class ItemDetail extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(
-          height: 50,
-          child: Text(
-            "Ingredients: " + item.ingredients.join(","),
-            textAlign: TextAlign.center,
-          ),
-        ),
-        SizedBox(
-          height: 50,
-          child: Text(
-            item.name,
-            textAlign: TextAlign.center,
-          ),
-        ),
+        _itemTextContent(item),
+        _itemButtonContent(),
       ],
+    );
+  }
+
+  Widget _itemTextContent(MenuItem item) {
+    return Padding(
+      padding: const EdgeInsets.all(20),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(
+            child: Text(
+              "Ingredients: " + item.ingredients.join(","),
+              textAlign: TextAlign.left,
+            ),
+          ),
+          const SizedBox(height: 20),
+          SizedBox(
+            child: Text(
+              item.name,
+              textAlign: TextAlign.center,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _itemButtonContent() {
+    return Padding(
+      padding: const EdgeInsets.all(50),
+      child: ElevatedButton(
+        onPressed: () {
+          print('add to cart pressed');
+        },
+        child: const Text('Add to cart'),
+      ),
     );
   }
 }
