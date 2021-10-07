@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:recommendinator/item_detail/bloc/item_detail_bloc.dart';
+import 'package:recommendinator/item_detail/item_detail.dart';
 import 'package:recommendinator/menu/bloc/menu_bloc.dart';
 import 'package:recommendinator/models/menu_item.dart';
 
@@ -34,6 +36,14 @@ class Menu extends StatelessWidget {
           var menuItem = menuItems[index];
           return Card(
               child: ListTile(
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                return BlocProvider(
+                  create: (_) => ItemDetailBloc(menuItem),
+                  child: const ItemDetail(),
+                );
+              }));
+            },
             title: Text(menuItem.name),
             subtitle: Text(menuItem.price.toString()),
             leading: CircleAvatar(
