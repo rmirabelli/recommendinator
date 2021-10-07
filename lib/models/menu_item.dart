@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 class MenuItem {
   String name;
   double price;
@@ -12,4 +14,15 @@ class MenuItem {
     required this.thumbnailURL,
     required this.preparation,
   });
+
+  factory MenuItem.fromJSON(Map<String, dynamic> json) {
+    print(json['name']);
+    return MenuItem(
+      name: json["name"] as String,
+      price: json["price"] as double,
+      thumbnailURL: json["thumbnail"] as String,
+      preparation: List.from(json["prep"]),
+      ingredients: List.from(json["ingredients"]),
+    );
+  }
 }
