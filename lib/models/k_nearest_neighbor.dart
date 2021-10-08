@@ -55,6 +55,14 @@ class KNearestNeighbor {
         .take(5)
         .map((e) =>
             menuItems.firstWhere((element) => element.name == e.keys.first))
+        .map(
+          (e) => MenuItem(
+              name: e.name,
+              price: e.price,
+              ingredients: e.ingredients,
+              thumbnailURL: e.thumbnailURL,
+              preparation: e.preparation),
+        )
         .toList();
   }
 }

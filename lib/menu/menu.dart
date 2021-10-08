@@ -89,8 +89,8 @@ class Menu extends StatelessWidget {
                 );
               }));
             },
-            title: Text(menuItem.name),
-            subtitle: Text(menuItem.price.toString()),
+            title: Text('${menuItem.name}'),
+            subtitle: Text('\$${menuItem.price}'),
             leading: CircleAvatar(
                 backgroundImage: NetworkImage(menuItem.thumbnailURL)),
             trailing: GestureDetector(
