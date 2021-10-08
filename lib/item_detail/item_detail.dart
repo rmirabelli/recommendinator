@@ -60,11 +60,16 @@ class ItemDetail extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                item.name,
-                style:
-                    const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              Flexible(
+                child: Text(
+                  item.name,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold, fontSize: 20),
+                ),
               ),
+              const SizedBox(width: 20),
               Text(
                 '\$${item.price.toStringAsFixed(2)}',
                 style:
@@ -74,11 +79,11 @@ class ItemDetail extends StatelessWidget {
           ),
           const SizedBox(height: 20),
           Text(
-            'Ingredients: ${item.ingredients.join(",")}',
+            'Ingredients: ${item.ingredients.join(', ')}',
             textAlign: TextAlign.left,
           ),
           const SizedBox(height: 20),
-          Text('Cooking method: ' + item.preparation.join(','))
+          Text('Cooking method: ' + item.preparation.join(', '))
         ],
       ),
     );
