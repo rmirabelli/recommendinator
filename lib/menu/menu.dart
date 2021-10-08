@@ -90,7 +90,7 @@ class Menu extends StatelessWidget {
               }));
             },
             title: Text('${menuItem.name}'),
-            subtitle: Text('\$${menuItem.price}'),
+            subtitle: Text('\$${menuItem.price.toStringAsFixed(2)}'),
             leading: CircleAvatar(
                 backgroundImage: NetworkImage(menuItem.thumbnailURL)),
             trailing: GestureDetector(

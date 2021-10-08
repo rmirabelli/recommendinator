@@ -66,7 +66,7 @@ class ItemDetail extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(item.name),
-              Text('\$ ' + item.price.toString()),
+              Text('\$${item.price.toStringAsFixed(2)}'),
             ],
           ),
           const SizedBox(height: 20),
