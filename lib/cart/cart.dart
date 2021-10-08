@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recommendinator/cart/bloc/cart_bloc.dart';
+import 'package:recommendinator/menu/bloc/menu_bloc.dart';
 import 'package:recommendinator/models/order_item.dart';
 
 class Cart extends StatelessWidget {
@@ -67,6 +68,7 @@ class Cart extends StatelessWidget {
       child: ElevatedButton(
         onPressed: () {
           context.read<CartBloc>().add(CheckoutCart());
+          context.read<MenuBloc>().add(LoadMenu());
           ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
             content: Text("Thanks for your order!"),
           ));

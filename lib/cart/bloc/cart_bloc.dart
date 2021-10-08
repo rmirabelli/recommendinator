@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
+import 'package:recommendinator/models/customer_preferences.dart';
 import 'package:recommendinator/models/order_item.dart';
 
 part 'cart_event.dart';
@@ -23,9 +24,14 @@ class CartBloc extends Bloc<CartEvent, CartState> {
       }
     });
 
-    on<CheckoutCart>((event, emit) {
-      //TODO: Add to customer preferences
-      currentItems = [];
+    on<CheckoutCart>((event, emit) async {
+      CustomerPreferences? preferences =
+          await CustomerPreferences.loadCustomerPreferences();
+      preferences ??= CustomerPreferences([]);
+      for (var element in currentItems) {
+        preferences.add(element);
+      }
+      CustomerPreferences.persistCustomerPreferences(preferences);
       emit(CartEmpty());
     });
 
