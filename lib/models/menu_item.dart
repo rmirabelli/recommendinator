@@ -16,6 +16,10 @@ class MenuItem {
     required this.preparation,
   });
 
+  List<String> get features {
+    return [...ingredients, ...preparation];
+  }
+
   factory MenuItem.fromJSON(Map<String, dynamic> json) {
     print(json['name']);
     return MenuItem(
