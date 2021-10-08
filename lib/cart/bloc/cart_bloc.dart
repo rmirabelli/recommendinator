@@ -32,6 +32,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
         preferences.add(element);
       }
       CustomerPreferences.persistCustomerPreferences(preferences);
+      currentItems = [];
       emit(CartEmpty());
     });
 
