@@ -39,15 +39,6 @@ class ItemDetail extends StatelessWidget {
             ),
           ),
         ),
-        // SizedBox(
-        //   height: 200,
-        //   child: Expanded(
-        //     child: FittedBox(
-        //       fit: BoxFit.none,
-        //       child: Image.network(item.thumbnailURL),
-        //     ),
-        //   ),
-        // ),
         _itemTextContent(context, item),
         Expanded(
           child: Align(
