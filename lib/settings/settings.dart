@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:recommendinator/add_item/add_item.dart';
+import 'package:recommendinator/add_item/bloc/add_item_bloc.dart';
 import 'package:recommendinator/menu/bloc/menu_bloc.dart';
 import 'package:recommendinator/models/customer_preferences.dart';
 import 'package:recommendinator/settings/bloc/settings_bloc.dart';
@@ -36,9 +38,14 @@ class Settings extends StatelessWidget {
   }
 
   void _performActionForSetting(BuildContext context, SettingsEnum setting) {
-    //TODO: Actually make them do stuff
     switch (setting) {
       case SettingsEnum.addItem:
+        Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+          return BlocProvider(
+            create: (_) => AddItemBloc(),
+            child: const AddItem(),
+          );
+        }));
         break;
       case SettingsEnum.reset:
         _showResetConfirmationDialog(context);
