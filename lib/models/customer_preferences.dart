@@ -1,13 +1,14 @@
-import 'package:recommendinator/models/menu_item.dart';
+import 'dart:convert';
+
 import 'package:shared_preferences/shared_preferences.dart';
-import '../models/menu_item.dart';
+import '../models/order_item.dart';
 
 class CustomerPreferences {
-  List<MenuItem> items;
+  List<OrderItem> items;
 
   CustomerPreferences(this.items);
 
-  add(MenuItem item) {
+  add(OrderItem item) {
     items.add(item);
   }
 
@@ -15,8 +16,19 @@ class CustomerPreferences {
       CustomerPreferences preferences) async {
     var mapItems = preferences.items.map((e) => e.toMap());
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setString("customer_preferences", mapItems);
+    final jsonString = json.encode(mapItems);
+    await prefs.setString("customer_preferences", jsonString);
   }
 
-  // static Future<CustomerPreferences> loadCustomerPreferences() async {}
+  static Future<CustomerPreferences?> loadCustomerPreferences() async {
+    final prefs = await SharedPreferences.getInstance();
+    final jsonString = prefs.getString("customer_preferences");
+    if (jsonString != null) {
+      final jsonArray = json.decode(jsonString) as List;
+      final orderItems = jsonArray.map((e) => OrderItem.fromJSON(e)).toList();
+      return CustomerPreferences(orderItems);
+    } else {
+      return null;
+    }
+  }
 }

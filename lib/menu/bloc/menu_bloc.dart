@@ -14,6 +14,8 @@ part 'menu_state.dart';
 class MenuBloc extends Bloc<MenuEvent, MenuState> {
   MenuBloc() : super(MenuInitial()) {
     on<LoadMenu>((event, emit) async {
+      List<MenuItem> allMenuItems = [];
+
       // Load menu from local JSON
       String jsonString = await rootBundle.loadString('assets/menu.json');
       Map<String, dynamic> jsonMap = json.decode(jsonString);
@@ -22,20 +24,21 @@ class MenuBloc extends Bloc<MenuEvent, MenuState> {
 
       //Generate recommended items and append
       KNearestNeighbor recommendinatorModel = KNearestNeighbor(menuItems);
-      //TODO: Pull preferences from stored items
-      CustomerPreferences preferences = CustomerPreferences(menuItems);
-      var recommendedItems =
-          recommendinatorModel.recommend(preferences).map((e) {
-        // Change these items to the "Recommended" group
-        var newItem = e;
-        newItem.group = "Recommended";
-        return newItem;
-      });
-      menuItems.addAll(recommendedItems);
+      CustomerPreferences? preferences =
+          await CustomerPreferences.loadCustomerPreferences();
+      if (preferences != null) {
+        var recommendedItems =
+            recommendinatorModel.recommend(preferences).map((e) {
+          // Change these items to the "Recommended" group
+          var newItem = e;
+          newItem.group = "Recommended";
+          return newItem;
+        });
+
+        allMenuItems.addAll(recommendedItems);
+      }
 
       //Add them all in one list
-      List<MenuItem> allMenuItems = [];
-      allMenuItems.addAll(recommendedItems);
       allMenuItems.addAll(menuItems);
 
       emit(MenuLoaded(allMenuItems));
