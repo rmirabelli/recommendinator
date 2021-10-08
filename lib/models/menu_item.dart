@@ -16,6 +16,13 @@ class MenuItem {
     required this.preparation,
   });
 
+  List<String> get features {
+    return [
+      ...ingredients.map((e) => e.toLowerCase()),
+      ...preparation.map((e) => e.toLowerCase()),
+    ];
+  }
+
   factory MenuItem.fromJSON(Map<String, dynamic> json) {
     return MenuItem(
       name: json["name"] as String,
