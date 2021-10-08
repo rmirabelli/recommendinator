@@ -6,6 +6,7 @@ class MenuItem {
   List<String> ingredients;
   String thumbnailURL;
   List<String> preparation;
+  String group = "Menu";
 
   MenuItem({
     required this.name,
@@ -14,6 +15,13 @@ class MenuItem {
     required this.thumbnailURL,
     required this.preparation,
   });
+
+  List<String> get features {
+    return [
+      ...ingredients.map((e) => e.toLowerCase()),
+      ...preparation.map((e) => e.toLowerCase()),
+    ];
+  }
 
   factory MenuItem.fromJSON(Map<String, dynamic> json) {
     print(json['name']);
