@@ -49,8 +49,12 @@ class KNearestNeighbor {
     );
     List<Map<String, double>> weights =
         menuItems.map((e) => {e.name: _computeWeight(e, counts)}).toList();
-    weights.sort((a, b) => a.values.first.compareTo(b.values.first));
+    weights.sort((a, b) => b.values.first.compareTo(a.values.first));
     print(weights);
-    return [preferences.items.first.item];
+    return weights
+        .take(5)
+        .map((e) =>
+            menuItems.firstWhere((element) => element.name == e.keys.first))
+        .toList();
   }
 }
