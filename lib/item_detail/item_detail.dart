@@ -30,48 +30,47 @@ class ItemDetail extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: <Widget>[
-        Container(
-          child: SizedBox(
-            child: Expanded(
-              child: FittedBox(
-                fit: BoxFit.contain, // otherwise the logo will be tiny
-                child: Image.network(item.thumbnailURL),
-              ),
+        SizedBox(
+          child: Expanded(
+            child: FittedBox(
+              fit: BoxFit.contain,
+              child: Image.network(item.thumbnailURL),
             ),
           ),
         ),
-        _itemTextContent(item),
-        _itemButtonContent(context, item),
+        _itemTextContent(context, item),
+        Expanded(
+          child: Align(
+            alignment: FractionalOffset.bottomCenter,
+            widthFactor: 10,
+            child: _itemButtonContent(context, item),
+          ),
+        ),
       ],
     );
   }
 
-  Widget _itemTextContent(MenuItem item) {
+  Widget _itemTextContent(BuildContext context, MenuItem item) {
     return Padding(
       padding: const EdgeInsets.all(20),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          SizedBox(
-            child: Text(
-              "Ingredients: " + item.ingredients.join(","),
-              textAlign: TextAlign.left,
-            ),
+          Text(
+            "Ingredients: " + item.ingredients.join(","),
+            textAlign: TextAlign.left,
           ),
           const SizedBox(height: 20),
-          SizedBox(
-            child: Text(
-              item.name,
-              textAlign: TextAlign.center,
-            ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(item.name),
+              Text('\$ ' + item.price.toString()),
+            ],
           ),
           const SizedBox(height: 20),
-          SizedBox(
-            child: Text(
-              item.name,
-              textAlign: TextAlign.center,
-            ),
-          ),
+          Text('Cooking method: ' + item.preparation.join(','))
         ],
       ),
     );
@@ -79,7 +78,7 @@ class ItemDetail extends StatelessWidget {
 
   Widget _itemButtonContent(BuildContext context, MenuItem menuItem) {
     return Padding(
-      padding: const EdgeInsets.all(50),
+      padding: const EdgeInsets.only(bottom: 50),
       child: ElevatedButton(
         onPressed: () {
           OrderItem item = OrderItem(menuItem, null);
