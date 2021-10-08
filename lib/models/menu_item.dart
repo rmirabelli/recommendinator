@@ -20,7 +20,17 @@ class MenuItem {
     return [
       ...ingredients.map((e) => e.toLowerCase()),
       ...preparation.map((e) => e.toLowerCase()),
+      priceBand
     ];
+  }
+
+  String get priceBand {
+    if (price < 5.0) return "PRICE_0";
+    if (price < 10.0) return "PRICE_1";
+    if (price < 15.0) return "PRICE_2";
+    if (price < 20.0) return "PRICE_3";
+    if (price < 25.0) return "PRICE_4";
+    return "PRICE_5";
   }
 
   factory MenuItem.fromJSON(Map<String, dynamic> json) {

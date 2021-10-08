@@ -1,0 +1,95 @@
+{
+    "items": [
+        {
+            "name": "beef taco",
+            "price": 2.13,
+            "ingredients": ["beef", "corn tortilla","cheese"],
+            "thumbnail": "https://www.tacobueno.com/assets/food/tacos/Taco_Soft_Beef_990x725.jpg?v=1",
+            "prep": ["mince"]
+        },
+        {
+            "name": "grilled chicken taco",
+            "price": 3.13,
+            "ingredients": ["chicken", "corn tortilla","cheese", "lettuce", "tomato"],
+            "thumbnail": "https://www.tacobueno.com/assets/food/tacos/Taco_Soft_Beef_990x725.jpg?v=1",
+            "prep": ["grilled"]
+        },
+        {
+            "name": "grilled shrimp taco",
+            "price": 3.13,
+            "ingredients": ["shrimp", "flour tortilla","cheese", "lettuce", "tomato", "lime", "cilantro"],
+            "thumbnail": "https://www.tacobueno.com/assets/food/tacos/Taco_Soft_Beef_990x725.jpg?v=1",
+            "prep": ["grilled"]
+        },
+        {
+            "name": "steak fajita taco",
+            "price": 2.13,
+            "ingredients": ["beef", "flour tortilla","cheese", "steak", "onions", "peppers", "fajita"],
+            "thumbnail": "https://www.tacobueno.com/assets/food/tacos/Taco_Soft_Beef_990x725.jpg?v=1",
+            "prep": ["grilled"]
+        },
+        {
+            "name": "chicken fajita taco",
+            "price": 3.13,
+            "ingredients": ["chicken", "flour tortilla","cheese", "lettuce", "tomato", "fajita", "onions", "peppers"],
+            "thumbnail": "https://www.tacobueno.com/assets/food/tacos/Taco_Soft_Beef_990x725.jpg?v=1",
+            "prep": ["grilled"]
+        },
+        {
+            "name": "shrimp fajita taco",
+            "price": 3.13,
+            "ingredients": ["shrimp", "flour tortilla","cheese", "lettuce", "lime", "cilantro", "onions", "peppers"],
+            "thumbnail": "https://www.tacobueno.com/assets/food/tacos/Taco_Soft_Beef_990x725.jpg?v=1",
+            "prep": ["grilled"]
+        },
+        {
+            "name": "bean burrito",
+            "price": 2.13,
+            "ingredients": ["beans", "flour tortilla","cheese"],
+            "thumbnail": "https://www.tacobueno.com/assets/food/tacos/Taco_Soft_Beef_990x725.jpg?v=1",
+            "prep": ["none"]
+        },
+        {
+            "name": "beef burrito",
+            "price": 2.13,
+            "ingredients": ["beef", "beans", "flour tortilla","cheese"],
+            "thumbnail": "https://www.tacobueno.com/assets/food/tacos/Taco_Soft_Beef_990x725.jpg?v=1",
+            "prep": ["mince"]
+        },
+        {
+            "name": "chicken burrito",
+            "price": 5.27,
+            "ingredients": ["chicken", "flour tortilla","cheese", "beans"],
+            "thumbnail": "https://www.tacobueno.com/assets/food/tacos/Taco_Soft_Beef_990x725.jpg?v=1",
+            "prep": ["grilled", "shredded"]
+        },
+        {
+            "name": "taco salad",
+            "price": 5.27,
+            "ingredients": ["beef", "lettuce","cheese", "tomato", "tortilla bowl"],
+            "thumbnail": "https://www.tacobueno.com/assets/food/tacos/Taco_Soft_Beef_990x725.jpg?v=1",
+            "prep": ["grilled", "salad","healthy"]
+        },
+        {
+            "name": "chicken taco salad",
+            "price": 6.27,
+            "ingredients": ["chicken", "lettuce","cheese", "tomato", "tortilla bowl"],
+            "thumbnail": "https://www.tacobueno.com/assets/food/tacos/Taco_Soft_Beef_990x725.jpg?v=1",
+            "prep": ["grilled", "salad","healthy"]
+        },
+        {
+            "name": "shrimp taco salad",
+            "price": 7.27,
+            "ingredients": ["shrimp", "lettuce","cheese", "tomato", "tortilla bowl"],
+            "thumbnail": "https://www.tacobueno.com/assets/food/tacos/Taco_Soft_Beef_990x725.jpg?v=1",
+            "prep": ["grilled", "salad","healthy"]
+        },
+        {
+            "name": "taco burger",
+            "price": 1.17,
+            "ingredients": ["beef", "lettuce","cheese", "tomato", "bun"],
+            "thumbnail": "https://www.tacobueno.com/assets/food/tacos/Taco_Soft_Beef_990x725.jpg?v=1",
+            "prep": ["mince"]
+        }
+    ]
+}
