@@ -30,14 +30,24 @@ class ItemDetail extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: <Widget>[
-        SizedBox(
-          child: Expanded(
-            child: FittedBox(
-              fit: BoxFit.contain,
-              child: Image.network(item.thumbnailURL),
+        Container(
+          height: 200,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              fit: BoxFit.fitWidth,
+              image: NetworkImage(item.thumbnailURL),
             ),
           ),
         ),
+        // SizedBox(
+        //   height: 200,
+        //   child: Expanded(
+        //     child: FittedBox(
+        //       fit: BoxFit.none,
+        //       child: Image.network(item.thumbnailURL),
+        //     ),
+        //   ),
+        // ),
         _itemTextContent(context, item),
         Expanded(
           child: Align(
