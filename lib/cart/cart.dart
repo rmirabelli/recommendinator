@@ -57,12 +57,13 @@ class Cart extends StatelessWidget {
               ),
             ));
           } else {
-            return _checkoutButtonContent(context);
+            return _checkoutButtonContent(context, orderItems);
           }
         });
   }
 
-  Widget _checkoutButtonContent(BuildContext context) {
+  Widget _checkoutButtonContent(
+      BuildContext context, List<OrderItem> orderItems) {
     return Padding(
       padding: const EdgeInsets.all(50),
       child: ElevatedButton(
@@ -73,7 +74,16 @@ class Cart extends StatelessWidget {
             content: Text("Thanks for your order!"),
           ));
         },
-        child: const Text('Checkout'),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text('Checkout: \$'),
+            Text(orderItems
+                .map((e) => e.item.price)
+                .reduce((value, element) => value + element)
+                .toStringAsFixed(2)),
+          ],
+        ),
       ),
     );
   }

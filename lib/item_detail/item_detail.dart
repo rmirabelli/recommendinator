@@ -77,6 +77,12 @@ class ItemDetail extends StatelessWidget {
   }
 
   Widget _itemButtonContent(BuildContext context, MenuItem menuItem) {
+    double width = MediaQuery.of(context).size.width * 0.7;
+    var customWidthChild = SizedBox(
+      width: width,
+      child: const Text('Add to cart', textAlign: TextAlign.center),
+    );
+
     return Padding(
       padding: const EdgeInsets.only(bottom: 50),
       child: ElevatedButton(
@@ -88,7 +94,7 @@ class ItemDetail extends StatelessWidget {
           ));
           Navigator.of(context).pop();
         },
-        child: const Text('Add to cart'),
+        child: customWidthChild,
       ),
     );
   }
