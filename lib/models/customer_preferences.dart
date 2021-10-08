@@ -14,7 +14,7 @@ class CustomerPreferences {
 
   static void persistCustomerPreferences(
       CustomerPreferences preferences) async {
-    var mapItems = preferences.items.map((e) => e.toMap());
+    var mapItems = preferences.items.map((e) => e.toMap()).toList();
     final prefs = await SharedPreferences.getInstance();
     final jsonString = json.encode(mapItems);
     await prefs.setString("customer_preferences", jsonString);
