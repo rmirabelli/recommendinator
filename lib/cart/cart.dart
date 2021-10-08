@@ -52,7 +52,8 @@ class Cart extends StatelessWidget {
                   ));
                 },
                 child: const Icon(
-                  Icons.remove, // add custom icons also
+                  Icons.remove_circle_outline,
+                  color: Colors.red, // add custom icons also
                 ),
               ),
             ));

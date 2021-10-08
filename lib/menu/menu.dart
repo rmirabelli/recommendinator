@@ -89,7 +89,7 @@ class Menu extends StatelessWidget {
                 );
               }));
             },
-            title: Text('${menuItem.name}'),
+            title: Text(menuItem.name),
             subtitle: Text('\$${menuItem.price.toStringAsFixed(2)}'),
             leading: CircleAvatar(
                 backgroundImage: NetworkImage(menuItem.thumbnailURL)),
@@ -103,6 +103,7 @@ class Menu extends StatelessWidget {
               },
               child: const Icon(
                 Icons.add, // add custom icons also
+                color: Colors.blueAccent,
               ),
             ),
           ));

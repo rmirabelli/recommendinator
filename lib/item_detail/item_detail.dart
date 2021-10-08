@@ -57,17 +57,25 @@ class ItemDetail extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(
-            "Ingredients: " + item.ingredients.join(","),
-            textAlign: TextAlign.left,
-          ),
-          const SizedBox(height: 20),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(item.name),
-              Text('\$${item.price.toStringAsFixed(2)}'),
+              Text(
+                item.name,
+                style:
+                    const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              ),
+              Text(
+                '\$${item.price.toStringAsFixed(2)}',
+                style:
+                    const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              ),
             ],
+          ),
+          const SizedBox(height: 20),
+          Text(
+            'Ingredients: ${item.ingredients.join(",")}',
+            textAlign: TextAlign.left,
           ),
           const SizedBox(height: 20),
           Text('Cooking method: ' + item.preparation.join(','))
