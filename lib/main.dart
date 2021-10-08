@@ -13,13 +13,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-        providers: [BlocProvider<CartBloc>(create: (_) => CartBloc())],
-        child: MaterialApp(
+        providers: [
+          BlocProvider<CartBloc>(create: (_) => CartBloc()),
+          BlocProvider(create: (_) => MenuBloc())
+        ],
+        child: const MaterialApp(
           title: 'The Recommendinator',
-          home: BlocProvider(
-            create: (_) => MenuBloc(),
-            child: const Menu(),
-          ),
+          home: Menu(),
         ));
   }
 }
